@@ -80,4 +80,37 @@ function launchHeartConfetti() {
     container.appendChild(heart);
     setTimeout(() => heart.remove(), 5000);
   }
+
 }
+
+
+
+const music = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+// Set the volume to a romantic, soft level
+music.volume = 0.4;
+
+// Function to start music on first click/interaction
+function startMusic() {
+  music.play().catch(error => {
+    console.log("Autoplay prevented. Music will start on the first interaction.");
+  });
+  // Remove the listener once music starts
+  document.removeEventListener('click', startMusic);
+}
+
+// Start music as soon as she clicks anywhere on the site
+document.addEventListener('click', startMusic);
+
+// Mute/Unmute Toggle logic
+musicToggle.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevents triggering other click events
+  if (music.paused) {
+    music.play();
+    musicToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+  } else {
+    music.pause();
+    musicToggle.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+  }
+});
