@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title> To my dear Lilian </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main id="app">
+
+  <!-- ACT 1 -->
+  <section class="act act-1 active">
+
+    <!-- Falling Gradient -->
+    <div class="gradient-drop"></div>
+
+    <!-- Floating Romance Icons -->
+    <div class="romance-bg">
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-envelope-open-heart"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-envelope"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-envelope-open-heart"></i>
+      <i class="fa-solid fa-envelope-open-heart"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-envelope"></i>
+      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-envelope"></i>
+    </div>
+
+    <!-- SVG Name -->
+    <svg class="name-svg" viewBox="0 0 400 900">
+  <defs>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <text x="50%" y="250" text-anchor="middle">Lilian</text>
+  <text x="50%" y="520" text-anchor="middle">Njeri</text>
+  <text x="50%" y="790" text-anchor="middle">Mwangi</text>
+</svg>
+
+
+  </section>
+
+<!-- ACT 2 -->
+<section class="act act-2">
+
+  <div class="poem">
+    <div class="line" id="line1">
+      <span class="text"></span><span class="cursor">|</span>
+    </div>
+
+    <div class="line" id="line2">
+      <span class="text"></span><span class="cursor">|</span>
+    </div>
+
+    <div class="line" id="line3">
+      <span class="text"></span><span class="cursor">|</span>
+    </div>
+  </div>
+
+  <div id="continueAct3" class="continue">
+    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-arrow-down"></i>
+  </div>
+
+
+</section>
+
+
+
+<!-- ACT 3 -->
+<section class="act act-3" id="act3">
+  <div class="act-3-content">
+    <p class="act-3-intro">I have spent my days seeking for beauty...</p>
+    <p class="act-3-meaning">Only to find that all the world’s grace lives in your smile.</p>
+    
+    <div class="divider">
+       <i class="fa-solid fa-feather-pointed"></i> </div>
+
+    <h1 class="act-3-question">
+      Lilian, will you be my Valentine?
+    </h1>
+
+    <div class="act-3-actions">
+      <button class="choice-btn" data-choice="yes">Yes, forever❤️</button>
+      <button class="choice-btn" data-choice="of-course">😘Of course, stop showing off!😁</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACT 4 -->
+<section class="act act-4" id="act4">
+  <div class="heart-confetti"></div>
+
+  <div class="act-4-content">
+    <h1>It’s Official! ❤️</h1>
+    <p>My heart is yours on FEB 14, and I couldn’t be happier😘.</p>
+    
+    <button id="toAct5Btn" class="final-note-btn">
+      Read my final note<i class="fa-solid fa-envelope-heart"></i>
+    </button>
+  </div>
+  <div class="heart-confetti"></div>
+  
+</section>
+
+
+
+<!-- ACT 5 -->
+<section class="act act-5" id="act5">
+  <div class="act-3-content"> <p class="act-5-line" style="--delay: 0.5s">
+      Lilian, you have made this day as beautiful as a poem.
+    </p>
+    <p class="act-5-line" style="--delay: 2.0s">
+      Thank you for choosing me to walk beside you. I promise to make every day feel just as magical as this moment.
+    </p>
+    <p class="act-5-line" style="--delay: 3.8s">
+      With all my love and devotion,
+      <span class="signature">Peter ❤️</span>
+    </p>
+  </div>
+</section>
+
+
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>

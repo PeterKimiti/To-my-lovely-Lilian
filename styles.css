@@ -1,0 +1,712 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: #FF5C8A;
+  font-family: 'Tangerine', cursive;
+}
+
+.act {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.act.active {
+  opacity: 1;
+}
+
+/* =========================
+   ACT 1 BACKGROUND
+========================= */
+
+.act-1 {
+  background: #FF5C8A;
+  overflow: hidden;
+}
+
+/* Falling gradient */
+.gradient-drop {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(230, 57, 70, 0),
+    rgba(230, 57, 70, 0.85),
+    rgba(249, 194, 209, 1)
+  );
+  animation: dropGradient 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  z-index: 1;
+}
+@keyframes dropGradient {
+  to {
+    top: 0;
+  }
+}
+
+
+
+/* =========================
+   FLOATING ROMANTIC ICONS
+========================= */
+/* Container for the floating elements */
+.romance-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.romance-bg i {
+  position: absolute;
+  color: white;
+  opacity: 0.25; /* Subtle so it doesn't distract from the name */
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+  animation: floatDrift 15s ease-in-out infinite;
+}
+
+/* Specific placements and sizes for all 12 icons */
+.romance-bg i:nth-child(1)  { top: 10%; left: 10%; font-size: 1.5rem; animation-duration: 12s; }
+.romance-bg i:nth-child(2)  { top: 25%; left: 80%; font-size: 2.5rem; animation-duration: 18s; animation-delay: -2s; }
+.romance-bg i:nth-child(3)  { top: 45%; left: 15%; font-size: 1.2rem; animation-duration: 15s; animation-delay: -5s; }
+.romance-bg i:nth-child(4)  { top: 15%; left: 50%; font-size: 2.0rem; animation-duration: 20s; }
+.romance-bg i:nth-child(5)  { top: 60%; left: 75%; font-size: 1.8rem; animation-duration: 14s; animation-delay: -1s; }
+.romance-bg i:nth-child(6)  { top: 80%; left: 20%; font-size: 2.2rem; animation-duration: 22s; animation-delay: -4s; }
+.romance-bg i:nth-child(7)  { top: 5%;  left: 35%; font-size: 1.0rem; animation-duration: 16s; }
+.romance-bg i:nth-child(8)  { top: 70%; left: 50%; font-size: 2.8rem; animation-duration: 19s; animation-delay: -3s; }
+.romance-bg i:nth-child(9)  { top: 90%; left: 85%; font-size: 1.4rem; animation-duration: 13s; }
+.romance-bg i:nth-child(10) { top: 35%; left: 40%; font-size: 1.9rem; animation-duration: 17s; animation-delay: -6s; }
+.romance-bg i:nth-child(11) { top: 55%; left: 5%;  font-size: 2.4rem; animation-duration: 21s; }
+.romance-bg i:nth-child(12) { top: 20%; left: 90%; font-size: 1.3rem; animation-duration: 15s; animation-delay: -2s; }
+
+/* A more dynamic "drifting" animation */
+@keyframes floatDrift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40px) translateX(20px) rotate(15deg);
+  }
+}
+
+/* =========================
+   SVG NAME DRAW
+========================= */
+
+.name-svg {
+  height: 75vh;
+  width: 100%;
+  z-index: 3;
+}
+
+.name-svg text {
+  fill: transparent;
+  stroke: white;
+  stroke-width: 1.6px;
+  font-size: 140px;
+  font-weight: 700;
+
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+
+  filter: url(#softGlow);
+
+  animation:
+    drawText 2.2s ease forwards,
+    glowPulse 1.8s ease forwards,
+    fillIn 1.2s ease forwards;
+}
+
+.name-svg text:nth-child(1) { animation-delay: 1.6s; }
+.name-svg text:nth-child(2) { animation-delay: 2.1s; }
+.name-svg text:nth-child(3) { animation-delay: 2.6s; }
+.name-svg text:nth-child(2) {
+  animation-delay: 1.6s, 3.6s, 4.2s;
+}
+
+.name-svg text:nth-child(3) {
+  animation-delay: 2.1s, 4.1s, 4.7s;
+}
+
+.name-svg text:nth-child(4) {
+  animation-delay: 2.6s, 4.6s, 5.2s;
+}
+
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes glowPulse {
+  0% {
+    filter: url(#softGlow);
+    opacity: 0.6;
+  }
+  100% {
+    filter: url(#softGlow);
+    opacity: 1;
+  }
+}
+@keyframes fillIn {
+  to {
+    fill: rgba(255, 255, 255, 0.95);
+  }
+}
+
+
+/* =========================
+   ACT 2 STYLE
+========================= */
+.line {
+  font-size: 2.8rem; /* bigger font */
+  margin-bottom: 1.5rem;
+  min-height: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.line .text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 0.7em;
+  color: #252002; /* Keeping that beautiful Gold */
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.4); 
+}
+
+/* Let's make the typing cursor gold too, so it matches the ink */
+.cursor {
+  color: #FFD700;
+  font-weight: 100;
+}
+
+
+.act-2 {
+  /* This adds a dark red tint over the vintage paper image */
+  background: 
+    linear-gradient(
+      rgba(139, 45, 59, 0.85), 
+      rgba(232, 93, 117, 0.9)
+    ),
+    url(assets/StockCake-Victorian_Rose_Parchment-2261866-medium.jpg); 
+  
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply; /* Blends the red into the paper */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centered vertically to fill the white space */
+  align-items: center;
+  padding: 2rem;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Let's make the poem container look like a subtle "page" */
+.poem {
+  background: rgba(255, 255, 255, 0.05); /* Very faint white glow */
+  padding: 3rem;
+  border-radius: 15px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  width: 100%;
+}
+
+@keyframes bgShift {
+  from { background-position: 0% 0%; }
+  to { background-position: 0% 100%; }
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Fade left → right */
+.fade-out {
+  mask-image: linear-gradient(to right, black 60%, transparent 100%);
+  mask-size: 200% 100%;
+  animation: fadeLTR 3s ease forwards;
+}
+
+@keyframes fadeLTR {
+  from { mask-position: 0% 0%; }
+  to { mask-position: 100% 0%; }
+}
+
+/* Continue section */
+
+
+.continue.show {
+  opacity: 1;
+}
+
+.continue .fa-heart {
+  color: #c61123; /* romantic red */
+  font-size: 3.8rem; /* BIG valentine heart */
+  animation: heartbeat 1.2s infinite;
+  filter: drop-shadow(0 0 12px rgba(230,57,70,0.6));
+}
+.continue .fa-heart:hover {
+  transform: scale(1.3);
+  color: #ff4d6d;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.18); }
+  60% { transform: scale(1); }
+}
+
+.continue .fa-arrow-down {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 1.8rem;
+  color: #FFD700;
+  animation: bounce 1.6s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+
+
+/* =========================
+   ACT 3
+========================= */
+
+.act-3 {
+  background: radial-gradient(
+    circle at top,
+    #3a0f1a,
+    #120509
+  );
+  transform: translateY(100%);
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.act-3.active {
+  transform: translateY(0);
+}
+
+.act-3-content {
+  text-align: center;
+  padding: 2rem;
+  max-width: 420px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(208, 183, 41, 0.947); /* Soft gold border */
+  padding: 4rem 2rem;
+  background: rgba(20, 0, 5, 0.7); /* Deep dark wine background */
+  box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
+}
+
+.act-3-intro,
+.act-3-meaning {
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  font-family: 'Great Vibes', cursive; /* Keeping the handwritten feel */
+  font-size: 2.5rem;
+  color: #dfa042; 
+  margin-bottom: 0.5rem;
+}
+
+.act-3-meaning {
+  animation-delay: 0.6s;
+}
+
+.act-3-question {
+  font-size: 4rem;
+  color: #d82727;
+  margin: 2rem 0;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 1.3s;
+}
+
+
+.act-3-actions {
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 2s;
+}
+
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.act-3-actions button {
+  font-family: 'Tangerine', cursive;
+  font-size: 1.5rem;
+  padding: 0.7rem 1.8rem;
+  margin: 0.7rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab);
+  color: white;
+
+  box-shadow:
+    0 8px 20px rgba(255, 77, 109, 0.35),
+    inset 0 0 0 rgba(255,255,255,0);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+.choice-btn {
+  animation: softPulse 3.6s ease-in-out infinite;
+}
+
+@keyframes softPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.035); }
+  100% { transform: scale(1); }
+}
+.choice-btn:hover,
+.choice-btn:focus-visible {
+  transform: scale(1.08);
+  box-shadow:
+    0 14px 30px rgba(255, 77, 109, 0.5),
+    inset 0 0 18px rgba(255,255,255,0.25);
+  filter: brightness(1.05);
+}
+.choice-btn:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 6px 14px rgba(255, 77, 109, 0.4),
+    inset 0 0 22px rgba(0,0,0,0.15);
+}
+.choice-btn.chosen {
+  animation: none;
+  transform: scale(1.12);
+  box-shadow:
+    0 0 40px rgba(255, 143, 171, 0.8);
+}
+
+.choice-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@keyframes pulseGlow {
+  0% { background-color: rgba(20, 0, 5, 0.7); }
+  50% { background-color: rgba(60, 0, 10, 0.8); }
+  100% { background-color: rgba(20, 0, 5, 0.7); }
+}
+
+.act-3.active {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+
+/* =========================
+   ACT 4
+========================= */
+
+.act-4 {
+  background: radial-gradient(
+    circle at center,
+    #ff8fab,
+    #ff4d6d,
+    #7a0019
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.act-4.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.act-4-content {
+  text-align: center;
+  color: white;
+  animation: celebrationRise 1.4s ease forwards;
+}
+
+.act-4-content h1 {
+  font-size: 3.6rem;
+  margin-bottom: 1rem;
+}
+
+.act-4-content p {
+  font-size: 2rem;
+  opacity: 0.9;
+}
+
+@keyframes celebrationRise {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   HEART CONFETTI
+========================= */
+
+.heart-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.heart {
+  position: absolute;
+  font-size: 1.8rem;
+  color: #fff;
+  opacity: 0.85;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) scale(1.2);
+    opacity: 0;
+  }
+}
+
+
+
+/* ACT 5 Layered */
+.act-5 {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+  z-index: 25; /* above Act 4 */
+}
+
+.act-5.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.act-5-content {
+  max-width: 420px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Tangerine', cursive;
+  background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+/* Act 5 dreamy float for lines */
+.act-5-line {
+  font-size: 2.2rem;
+  margin: 1rem 0;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 1.2s ease forwards,
+             floatShimmer 3.6s ease-in-out infinite;
+  animation-delay: var(--delay), 0s; /* fadeUp uses var(--delay), floatShimmer is continuous */
+}
+
+/* Subtle vertical float + scale + shimmer */
+@keyframes floatShimmer {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.95;
+  }
+  25% {
+    transform: translateY(-4px) scale(1.02);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.95;
+  }
+  75% {
+    transform: translateY(3px) scale(1.01);
+    opacity: 0.98;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.95;
+  }
+}
+
+
+.act-5-line:nth-child(1) { animation-delay: var(--delay), 0s; }
+.act-5-line:nth-child(2) { animation-delay: var(--delay), 0.3s; }
+.act-5-line:nth-child(3) { animation-delay: var(--delay), 0.6s; }
+
+.act-5 {
+  background: rgb(78, 6, 6); 
+  position: fixed; /* layer above Act 4 */
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none; /* prevent interaction before active */
+  transition: opacity 1.4s ease;
+  z-index: 25; /* above Act 4 and Flower confetti */
+}
+
+.act-5.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* Fade-out for Act 4 text */
+.act-4-content.fade-out {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.act-4-content h1 {
+  font-family: 'Tangerine', cursive;
+  font-size: 5rem; /* Make it massive! */
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 50px #ff4d6d;
+  margin-bottom: 2rem;
+}
+
+.act-4-content p {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.8rem;
+  color: #f6d7a7;
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+  animation-delay: 1s; /* The sub-text appears slightly after the 'Yes' */
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+.act-4 {
+  background: radial-gradient(circle at center, #ff8fab, #ff4d6d, #7a0019);
+  background-size: 200% 200%;
+  animation: bgPulse 5s ease infinite;
+}
+
+@keyframes bgPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.final-note-btn {
+  margin-top: 3rem;
+  padding: 1rem 2.5rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  
+  /* Start hidden */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+  pointer-events: none;
+}
+
+.final-note-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.final-note-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.act-5-content {
+  width: 90%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px 20px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.act-5-line {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  margin-bottom: 20px;
+}
+
+/* Make the final signature stand out */
+.act-5-line span {
+  font-size: 3rem;
+  display: block;
+  margin-top: 15px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
